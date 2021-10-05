@@ -1,13 +1,12 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: clean data requirements
 
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
-PROJECT_NAME = cdc-birth-data
+PROJECT_NAME = weibull-knowledge-informed
 PYTHON_INTERPRETER = python3
 
 ifeq (,$(shell which conda))
@@ -20,57 +19,75 @@ endif
 # COMMANDS                                                                      #
 #################################################################################
 
-## Install Python Dependencies
-requirements: test_environment
-	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
-	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+## Create environment and install dependencies
+create_environment: test_environment
+ifeq (True,$(HAS_CONDA)) # assume on local
+	@echo ">>> Detected conda. Assume local computer. Installing packages from yml."
+	conda env create -f envweibull.yml
+else # assume on HPC
+	@echo ">>> No Conda detected. Assume on HPC."
+	bash make_hpc_venv.sh
+	@echo ">>> venv created. Activate with source ~/weibull/bin/activate"
+endif
+
+## Download data
+download:
+ifeq (True,$(HAS_CONDA)) # assume on local
+	bash src/data/download_data_local.sh $(PROJECT_DIR)
+else # assume on HPC
+	bash src/data/download_data_hpc.sh $(PROJECT_DIR)
+endif
+	
+
+## Extract downloaded data and rename directories as needed
+extract:
+ifeq (True,$(HAS_CONDA)) # assume on local
+	bash src/data/extract_data_local.sh $(PROJECT_DIR)
+else # assume on HPC
+	bash src/data/extract_data_hpc.sh $(PROJECT_DIR)
+endif
+
 
 ## Make Dataset
 data: requirements
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+
+
+## Train on IMS
+train_ims: 
+	$(PYTHON_INTERPRETER) src/models/train_models.py ims
+
+
+## Train on FEMTO
+train_femto:
+	$(PYTHON_INTERPRETER) src/models/train_models.py femto
+
+
+## Gather the IMS models and generate summaries of how the models perform
+summarize_ims_models:
+	$(PYTHON_INTERPRETER) src/models/summarize_model_results.py ims
+
+
+## Gather the PRONOSTIAL (FEMTO) models and generate summaries of how the models perform
+summarize_femto_models:
+	$(PYTHON_INTERPRETER) src/models/summarize_model_results.py femto
+
+
+## Make the figures of the data
+figures_data:
+	$(PYTHON_INTERPRETER) src/visualization/visualize_data.py
+
+
+## Make the figures of the results
+figures_results:
+	$(PYTHON_INTERPRETER) src/visualization/visualize_results.py
+
 
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
-lint:
-	flake8 src
-
-## Upload Data to S3
-sync_data_to_s3:
-ifeq (default,$(PROFILE))
-	aws s3 sync data/ s3://$(BUCKET)/data/
-else
-	aws s3 sync data/ s3://$(BUCKET)/data/ --profile $(PROFILE)
-endif
-
-## Download Data from S3
-sync_data_from_s3:
-ifeq (default,$(PROFILE))
-	aws s3 sync s3://$(BUCKET)/data/ data/
-else
-	aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
-endif
-
-## Set up python interpreter environment
-create_environment:
-ifeq (True,$(HAS_CONDA))
-		@echo ">>> Detected conda, creating conda environment."
-ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
-	conda create --name $(PROJECT_NAME) python=3
-else
-	conda create --name $(PROJECT_NAME) python=2.7
-endif
-		@echo ">>> New conda env created. Activate with:\nsource activate $(PROJECT_NAME)"
-else
-	$(PYTHON_INTERPRETER) -m pip install -q virtualenv virtualenvwrapper
-	@echo ">>> Installing virtualenvwrapper if not already installed.\nMake sure the following lines are in shell startup file\n\
-	export WORKON_HOME=$$HOME/.virtualenvs\nexport PROJECT_HOME=$$HOME/Devel\nsource /usr/local/bin/virtualenvwrapper.sh\n"
-	@bash -c "source `which virtualenvwrapper.sh`;mkvirtualenv $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER)"
-	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
-endif
 
 ## Test python environment is setup correctly
 test_environment:
