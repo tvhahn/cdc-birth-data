@@ -38,11 +38,7 @@ download:
 
 ## Extract downloaded data and rename directories as needed
 extract:
-ifeq (True,$(HAS_CONDA)) # assume on local
-	bash src/data/extract_data_local.sh $(PROJECT_DIR)
-else # assume on HPC
-	bash src/data/extract_data_hpc.sh $(PROJECT_DIR)
-endif
+	bash src/data/extract.sh $(PROJECT_DIR)
 
 
 ## Make Dataset
