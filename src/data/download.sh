@@ -2,6 +2,8 @@
 PROJECT_DIR=$1
 cd $PROJECT_DIR
 
+mkdir -p $PROJECT_DIR/data/raw
+
 # move to raw data folder
 cd $PROJECT_DIR/data/raw
 
