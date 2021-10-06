@@ -9,5 +9,5 @@ cd $PROJECT_DIR/data/raw
 unzip '*.zip'
 
 # rename 2018 and 2019 files so that they fit standard naming convention
-mv $PROJECT_DIR/data/natl2018us.csv $PROJECT_DIR/data/natl2018.csv
-mv $PROJECT_DIR/data/rawbirth_2019_nber_us_v2.csv $PROJECT_DIR/data/natl2019.csv
+mv $PROJECT_DIR/data/raw/natl2018us.csv $PROJECT_DIR/data/raw/natl2018.csv
+mv $PROJECT_DIR/data/raw/birth_2019_nber_us_v2.csv $PROJECT_DIR/data/raw/natl2019.csv
