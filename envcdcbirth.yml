@@ -1,23 +1,19 @@
-name: weibull
+name: cdcbirth
 channels:
-  - nvidia
-  - pytorch
   - conda-forge
+  - defaults
 dependencies:
   - python=3.8
   - conda
   - mamba
-  - pytorch
-  - torchvision
-  - torchaudio
-  - cudatoolkit=11.0
   - jupyterlab
+  - notebook
   - numpy
   - scipy
+  - plotly   
   - matplotlib
   - seaborn
   - pandas
-  - scikit-learn
   - click
-  - h5py 
+  - python-dotenv
 

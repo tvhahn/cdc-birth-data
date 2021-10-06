@@ -1,7 +1,7 @@
 #!/bin/bash
 cd
 module load python/3.8
-virtualenv ~/weibull
+virtualenv ~/cdcbirth
 source ~/weibull/bin/activate
 pip install --no-index --upgrade pip
 pip install --no-index pandas scipy scikit_learn matplotlib seaborn
@@ -16,12 +16,3 @@ jupyter-lab --ip \$(hostname -f) --no-browser
 EOF
 
 chmod u+x $VIRTUAL_ENV/bin/notebook.sh
-
-# install unrar in environment since it does not
-# exist by default on HPC system -- make from source
-cd scratch
-wget https://www.rarlab.com/rar/unrarsrc-6.0.7.tar.gz
-tar -xf unrarsrc-6.0.7.tar.gz
-cd unrar
-make -f makefile
-install -v -m755 unrar ~/weibull/bin
