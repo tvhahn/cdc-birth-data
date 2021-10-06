@@ -28,16 +28,12 @@ ifeq (True,$(HAS_CONDA)) # assume on local
 else # assume on HPC
 	@echo ">>> No Conda detected. Assume on HPC."
 	bash make_hpc_venv.sh
-	@echo ">>> venv created. Activate with source ~/weibull/bin/activate"
+	@echo ">>> venv created. Activate with source ~/cdcbirth/bin/activate"
 endif
 
 ## Download data
 download:
-ifeq (True,$(HAS_CONDA)) # assume on local
-	bash src/data/download_data_local.sh $(PROJECT_DIR)
-else # assume on HPC
-	bash src/data/download_data_hpc.sh $(PROJECT_DIR)
-endif
+	bash src/data/download.sh $(PROJECT_DIR)
 	
 
 ## Extract downloaded data and rename directories as needed
