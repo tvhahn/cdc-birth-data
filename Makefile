@@ -43,7 +43,7 @@ extract:
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+	$(PYTHON_INTERPRETER) src/data/make_dataset_geo.py
 
 
 ## Train on IMS
