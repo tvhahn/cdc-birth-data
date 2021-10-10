@@ -6,6 +6,7 @@ import pathlib
 from src.data.data_prep_utils import df_from_csv_with_geo
 from multiprocessing import Pool
 import os
+import numpy as np
 
 
 # @click.command()
@@ -49,7 +50,14 @@ if __name__ == '__main__':
     print(type(project_dir))
 
 
-    df_c = main(project_dir / 'data/raw/')
+    df = main(project_dir / 'data/raw/')
+    print('Final df shape:', df.shape)
 
-    df_c.to_csv(project_dir / 'birth_geo_test.csv.gz', compression='gzip', index=False)
+    # create a birth count for each unique geo and date
+    # this should reduce the size of the df significantly
+    df['births'] = np.ones(df.shape[0])
+    df = df.groupby(list(df.columns)[:-1], as_index=False).count().sort_values(by=['dob_yy','dob_mm'])
+    print('Shape after consolidated birth count:', df.shape)
+
+    df.to_csv(project_dir / 'birth_geo_test.csv.gz', compression='gzip', index=False)
 
