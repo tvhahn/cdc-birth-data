@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 import pandas as pd
 import pathlib
-from src.data.data_prep_utils import df_from_csv_with_geo
+from src.data.data_prep_utils import df_from_csv_no_geo
 from multiprocessing import Pool
 import os
 import numpy as np
@@ -28,7 +28,7 @@ def main(folder_raw_data):
     with Pool(processes=6) as pool: # or whatever your hardware can support
 
         # have your pool map the file names to dataframes
-        df_list = pool.map(df_from_csv_with_geo, file_list)
+        df_list = pool.map(df_from_csv_no_geo, file_list)
 
         # reduce the list of dataframes to a single dataframe
         combined_df = pd.concat(df_list, ignore_index=True)
@@ -53,11 +53,5 @@ if __name__ == '__main__':
     df = main(project_dir / 'data/raw/')
     print('Final df shape:', df.shape)
 
-    # create a birth count for each unique geo and date
-    # this should reduce the size of the df significantly
-    df['births'] = np.ones(df.shape[0])
-    df = df.groupby(list(df.columns)[:-1], as_index=False).count().sort_values(by=['dob_yy','dob_mm'])
-    print('Shape after consolidated birth count:', df.shape)
-
-    df.to_csv(project_dir / 'birth_geo_test.csv.gz', compression='gzip', index=False)
+    df.to_csv(project_dir / 'birth__no_geo_test.csv', index=False)
 
