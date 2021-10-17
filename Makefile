@@ -47,15 +47,6 @@ data: requirements
 	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo.py
 
 
-## Train on IMS
-train_ims: 
-	$(PYTHON_INTERPRETER) src/models/train_models.py ims
-
-
-## Train on FEMTO
-train_femto:
-	$(PYTHON_INTERPRETER) src/models/train_models.py femto
-
 
 ## Gather the IMS models and generate summaries of how the models perform
 summarize_ims_models:
