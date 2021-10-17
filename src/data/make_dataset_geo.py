@@ -22,7 +22,6 @@ def main(folder_raw_data):
     # get a list of file names
     files = os.listdir(folder_raw_data)
     file_list = [Path(folder_raw_data) / filename for filename in files if filename.endswith('.csv')]
-    print(files)
 
     # set up your pool
     with Pool(processes=6) as pool: # or whatever your hardware can support
