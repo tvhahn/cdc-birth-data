@@ -3,6 +3,16 @@ CDC Birth Data
 
 Exploring the CDC birth data files.
 
+
+
+## Setup
+
+Project will work well in a Linux and on a HPC environment. It will also work with MacOS (although not tested). Windows may require some minor changes by the user.
+
+
+
+
+
 Project Organization
 ------------
 
@@ -51,7 +61,3 @@ Project Organization
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
-
---------
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
