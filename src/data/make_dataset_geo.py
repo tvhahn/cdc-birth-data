@@ -1,17 +1,12 @@
-import click
 import logging
 from pathlib import Path
 import pandas as pd
-import pathlib
 from src.data.data_prep_utils import df_from_csv_with_geo
 from multiprocessing import Pool
 import os
 import numpy as np
 
 
-# @click.command()
-# @click.argument('input_filepath', type=click.Path(exists=True))
-# @click.argument('output_filepath', type=click.Path())
 def main(folder_raw_data):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
@@ -41,8 +36,6 @@ def main(folder_raw_data):
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     logging.basicConfig(level=logging.INFO, format=log_fmt)
-
-    
 
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]
