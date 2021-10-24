@@ -38,15 +38,15 @@ def df_from_csv_with_geo(file_path, nrows=None):
         
         # require differnt column names depending on year
         # columns for 2003+
-        col_load_1 = ['dob_yy','dob_mm','dob_wk','mrstate','mrcntyfips','mrcityfips',]
+        col_load_1 = ['dob_yy','dob_mm','dob_wk','mrstate','mrcntyfips','mrcityfips','apgar5']
 
         # columns for 1989-2002
-        col_load_2 =['biryr', 'birmon', 'weekday', 'stresfip', 'cntyrfip', 'cityres']
-        rename_col2 = ['dob_yy','dob_mm','dob_wk','mrstate','mrcntyfips','mrcityfips',]
+        col_load_2 =['biryr', 'birmon', 'weekday', 'stresfip', 'cntyrfip', 'cityres', 'fmaps']
+        rename_col2 = ['dob_yy','dob_mm','dob_wk','mrstate','mrcntyfips','mrcityfips', 'apgar5']
         
         # columns for 1982 through 1988
-        col_load_3 =['datayear', 'birmon','birday','stresfip', 'cntyrfip', 'cityres']
-        rename_col3 = ['dob_yy','dob_mm','dob_day','mrstate','mrcntyfips','mrcityfips',]
+        col_load_3 =['datayear', 'birmon','birday','stresfip', 'cntyrfip', 'cityres', 'fmaps']
+        rename_col3 = ['dob_yy','dob_mm','dob_day','mrstate','mrcntyfips','mrcityfips', 'apgar5']
 
         # create dictionary to rename older csvs
         col_rename_dict2 = dict(zip(col_load_2, rename_col2))
