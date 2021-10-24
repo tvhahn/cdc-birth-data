@@ -16,6 +16,7 @@ def df_from_csv_with_geo(file_path, nrows=None):
     # get year of CSV
     year = int(str(file_path).split('/')[-1][4:8])
     
+    # no geo data before 1982 or after 2004
     if year > 2004 or year < 1982:
         pass
     
