@@ -5,7 +5,7 @@ virtualenv ~/cdcbirth
 source ~/cdcbirth/bin/activate
 pip install --no-index --upgrade pip
 pip install --no-index pandas scipy scikit_learn matplotlib seaborn plotly
-pip install --no-index jupyterlab click h5py
+pip install --no-index jupyterlab
 # pip install python-dotenv # don't think I need this????
 
 # create bash script for opening jupyter notebooks https://stackoverflow.com/a/4879146/9214620
