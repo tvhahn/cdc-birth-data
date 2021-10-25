@@ -24,7 +24,7 @@ def main(folder_raw_data):
     ]
 
     # set up your pool
-    with Pool(processes=12) as pool:  # or whatever your hardware can support
+    with Pool(processes=8) as pool:  # or whatever your hardware can support
 
         # have your pool map the file names to dataframes
         df_list = pool.map(df_from_csv_with_geo, file_list)
@@ -53,6 +53,7 @@ if __name__ == "__main__":
 
     # create a birth count for each unique geo and date
     # this should reduce the size of the df significantly
+    df = df.drop(columns=["apgar5"]) # not needed in consolidated table
     df = (
         df.groupby(list(df.columns)[:-1], as_index=False)
         .count()
