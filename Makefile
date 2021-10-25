@@ -43,9 +43,12 @@ extract:
 
 ## Make Dataset
 data: requirements
+ifeq (True,$(HAS_CONDA)) # assume on local
 	$(PYTHON_INTERPRETER) src/data/make_dataset_geo.py
 	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo.py
-
+else # assume on HPC
+	sbatch src/data/make_hpc_data.sh
+endif
 
 
 ## Gather the IMS models and generate summaries of how the models perform
