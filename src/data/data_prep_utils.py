@@ -275,3 +275,96 @@ def df_from_csv_no_geo(file_path, nrows=None):
     return df[["dob_yy", "dob_mm", "births"]].astype(
         {"dob_mm": int, "dob_yy": int, "births": int}
     )
+
+
+def df_from_csv_no_geo_extra(file_path, nrows=None):
+    """Extract useful columns from birth record csv
+    Takes a csv path. Produces a dataframe without geo data.
+    Includes extra columns, such as apgar5, from 1978 onwards.
+    """
+
+    # get year of CSV
+    year = int(str(file_path).split("/")[-1][4:8])
+
+    # require differnt column names depending on year
+    # columns for 2003+
+    col_load_1 = ["dob_yy", "dob_mm", "apgar5"]
+
+    # columns for 1989-2002
+    col_load_2 = ["biryr", "birmon", "fmaps"]
+    rename_col2 = ["dob_yy", "dob_mm", "apgar5"]
+
+    # columns for 1982 through 1988
+    col_load_3 = ["datayear", "birmon", "fmaps"]
+    rename_col3 = ["dob_yy", "dob_mm", "apgar5"]
+
+    # create dictionary to rename older csvs
+    col_rename_dict2 = dict(zip(col_load_2, rename_col2))
+    col_rename_dict3 = dict(zip(col_load_3, rename_col3))
+
+    # create dictionary to rename older CSVs from 1991 to 2002
+    col_rename_dict = dict(zip(col_load_2, col_load_1))
+
+    # if the CSVs are of newer format
+    if year >= 2003:
+
+        # load only select columns, and set dtype for columns
+        df = pd.read_csv(file_path, nrows=nrows, usecols=col_load_1, dtype=str)
+
+        # drop any rows with NaN's
+        df = df.dropna()
+
+        df["births"] = np.ones(df.shape[0])
+        df = (
+            df.groupby(["dob_yy", "dob_mm", "apgar5"], as_index=False)
+            .count()
+            .sort_values(by=["dob_yy", "dob_mm", "apgar5"])
+        )
+
+    elif year > 1988 and year < 2004:
+
+        # load only select columns from the birth CSV
+        df = pd.read_csv(file_path, nrows=nrows, usecols=col_load_2, dtype=str).rename(
+            columns=col_rename_dict2
+        )
+
+        # drop any rows with NaN's
+        df = df.dropna()
+
+        df["births"] = np.ones(df.shape[0])
+        df = (
+            df.groupby(["dob_yy", "dob_mm", "apgar5"], as_index=False)
+            .count()
+            .sort_values(by=["dob_yy", "dob_mm", "apgar5"])
+        )
+
+    # if the CSVs are of older format
+    elif year > 1977 and year <= 1988:
+
+        # load only select columns from the birth CSV
+        df = pd.read_csv(file_path, nrows=nrows, usecols=col_load_3, dtype=str).rename(
+            columns=col_rename_dict3
+        )
+
+        # years before 1989 only show a single digit (i.e. 2 for 1982)
+        df = df.drop(columns=["dob_yy"])
+        df["dob_yy"] = np.array([year] * df.shape[0])
+
+        # drop any rows with NaN's
+        df = df.dropna()
+
+        df["births"] = np.ones(df.shape[0])
+        df = (
+            df.groupby(["dob_yy", "dob_mm", "apgar5"], as_index=False)
+            .count()
+            .sort_values(by=["dob_yy", "dob_mm", "apgar5"])
+        )
+    # if the csvs are older than 1978 they do not have relevant cols
+    # like apgar, and thus we skip them
+    else:
+        pass
+
+    # return the dataframe, and order the columns in a fixed manner
+    return df[["dob_yy", "dob_mm", "apgar5", "births"]].astype(
+        {"dob_mm": int, "dob_yy": int, "apgar5": int, "births": int}
+    )
