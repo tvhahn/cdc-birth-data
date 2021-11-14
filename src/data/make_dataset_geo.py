@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
 
     df["births"] = np.ones(df.shape[0])
-    df.to_csv(project_dir / "birth_geo_births_ind_test.csv.gz", compression="gzip", index=False)
+    df.to_csv(project_dir / "data/processed" / "birth_geo_ind_apgar.csv.gz", compression="gzip", index=False)
 
     # create a birth count for each unique geo and date
     # this should reduce the size of the df significantly
@@ -61,4 +61,4 @@ if __name__ == "__main__":
     )
     print("Shape after consolidated birth count:", df.shape)
 
-    df.to_csv(project_dir / "birth_geo_births_summed_test.csv.gz", compression="gzip", index=False)
+    df.to_csv(project_dir / "data/processed" / "birth_geo_consolidated.csv.gz", compression="gzip", index=False)
