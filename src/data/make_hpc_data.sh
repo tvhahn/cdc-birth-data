@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=00:20:00 # 20 minutes
+#SBATCH --time=00:30:00 # 20 minutes
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
@@ -13,3 +13,4 @@ source ~/cdcbirth/bin/activate
 
 python src/data/make_dataset_geo.py
 python src/data/make_dataset_no_geo.py
+python src/data/make_dataset_no_geo_extra.py

@@ -44,4 +44,4 @@ if __name__ == "__main__":
     df = main(project_dir / "data/raw/")
     print("Final df shape:", df.shape)
 
-    df.to_csv(project_dir / "birth__no_geo_test.csv", index=False)
+    df.to_csv(project_dir / "data/processed" / "birth_no_geo_apgar.csv", index=False)

@@ -362,7 +362,7 @@ def df_from_csv_no_geo_extra(file_path, nrows=None):
     # if the csvs are older than 1978 they do not have relevant cols
     # like apgar, and thus we skip them
     else:
-        pass
+        df = pd.DataFrame(columns=["dob_yy", "dob_mm", "apgar5", "births"])
 
     # return the dataframe, and order the columns in a fixed manner
     return df[["dob_yy", "dob_mm", "apgar5", "births"]].astype(
