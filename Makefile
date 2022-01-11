@@ -51,24 +51,14 @@ else # assume on HPC
 endif
 
 
-## Gather the IMS models and generate summaries of how the models perform
-summarize_ims_models:
-	$(PYTHON_INTERPRETER) src/models/summarize_model_results.py ims
-
-
-## Gather the PRONOSTIAL (FEMTO) models and generate summaries of how the models perform
-summarize_femto_models:
-	$(PYTHON_INTERPRETER) src/models/summarize_model_results.py femto
-
-
-## Make the figures of the data
-figures_data:
-	$(PYTHON_INTERPRETER) src/visualization/visualize_data.py
-
-
-## Make the figures of the results
-figures_results:
-	$(PYTHON_INTERPRETER) src/visualization/visualize_results.py
+## Make the various figures
+figures: requirements
+ifeq (True,$(HAS_CONDA)) # assume on local
+	$(PYTHON_INTERPRETER) src/data/make_dataset_geo.py
+	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo.py
+else # assume on HPC
+	sbatch src/data/make_hpc_data.sh
+endif
 
 
 ## Delete all compiled Python files
