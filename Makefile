@@ -75,6 +75,7 @@ figures_results:
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	find . -type d -name "*.out" -delete
 
 
 ## Test python environment is setup correctly

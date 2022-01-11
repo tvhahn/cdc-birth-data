@@ -14,6 +14,8 @@ for i in $(seq 0 52); do
    wget https://data.nber.org/natality/"${years[$i]}"/natl"${years[$i]}".csv.zip 
 done
 
-wget http://data.nber.org/natality/2019/nber_output/birth_2019_nber_us_v2.csv
+# files that do not follow about "natl" naming format (after 2018)
+wget https://data.nber.org/natality/2019/nber_output/US/birth_2019_nber_us.zip
+wget https://data.nber.org/natality/2020/nber_output/US/birth_2020_nber_us.zip
 
 
