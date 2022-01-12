@@ -15,6 +15,7 @@ def df_from_csv_with_geo(file_path, nrows=None):
 
     # get year of CSV
     year = int(str(file_path).split("/")[-1][4:8])
+    # print(year)
 
     # no geo data before 1982 or after 2004
     if year > 2004 or year < 1982:
@@ -175,6 +176,7 @@ def df_from_csv_with_geo(file_path, nrows=None):
             df = df.dropna()
 
         # return the dataframe, and order the columns in a fixed manner
+        print(f'{year} processing complete')
         return df[
             [
                 "dob_yy",
@@ -196,6 +198,7 @@ def df_from_csv_no_geo(file_path, nrows=None):
 
     # get year of CSV
     year = int(str(file_path).split("/")[-1][4:8])
+    # print(year)
 
     # require differnt column names depending on year
     # columns for 2003+
@@ -272,6 +275,7 @@ def df_from_csv_no_geo(file_path, nrows=None):
         )
 
     # return the dataframe, and order the columns in a fixed manner
+    print(f'{year} processing complete')
     return df[["dob_yy", "dob_mm", "births"]].astype(
         {"dob_mm": int, "dob_yy": int, "births": int}
     )
@@ -285,6 +289,7 @@ def df_from_csv_no_geo_extra(file_path, nrows=None):
 
     # get year of CSV
     year = int(str(file_path).split("/")[-1][4:8])
+    print(year)
 
     # require differnt column names depending on year
     # columns for 2003+

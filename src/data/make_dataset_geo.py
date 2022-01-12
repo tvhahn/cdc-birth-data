@@ -12,7 +12,7 @@ def main(folder_raw_data):
     cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info("making final data set from raw data")
+    logger.info("making the final data set with geo data, but nothing extra (e.g APGAR data)")
 
     # get a list of file names
     files = os.listdir(folder_raw_data)
