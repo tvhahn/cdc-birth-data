@@ -11,6 +11,6 @@ module load python/3.8
 
 source ~/cdcbirth/bin/activate
 
-python src/data/make_dataset_geo.py
-python src/data/make_dataset_no_geo.py
-# python src/data/make_dataset_no_geo_extra.py
+# python src/data/make_dataset_geo.py
+# python src/data/make_dataset_no_geo.py
+python src/data/make_dataset_no_geo_extra.py

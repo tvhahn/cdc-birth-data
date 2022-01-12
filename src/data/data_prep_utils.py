@@ -289,7 +289,7 @@ def df_from_csv_no_geo_extra(file_path, nrows=None):
 
     # get year of CSV
     year = int(str(file_path).split("/")[-1][4:8])
-    print(year)
+    # print(year)
 
     # require differnt column names depending on year
     # columns for 2003+
@@ -370,6 +370,7 @@ def df_from_csv_no_geo_extra(file_path, nrows=None):
         df = pd.DataFrame(columns=["dob_yy", "dob_mm", "apgar5", "births"])
 
     # return the dataframe, and order the columns in a fixed manner
+    print(f'{year} processing complete')
     return df[["dob_yy", "dob_mm", "apgar5", "births"]].astype(
         {"dob_mm": int, "dob_yy": int, "apgar5": int, "births": int}
     )
