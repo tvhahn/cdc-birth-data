@@ -1,13 +1,42 @@
-CDC Birth Data
+CDC Birth Data in Python
 ==============================
 
-Exploring the CDC birth data files.
+Exploring the CDC birth data files using Python.
+
+The work can by broken into two parts:
+
+1. Data prep and consolidation of all data files into several summary tables. The summary tables may be of use to others.
+2. Analysis of the data, including production of several data visualizations
+
+
+
+
+
+**Still a work in progress.**
+
+<div style="text-align: left; ">
+<figure>
+       <img src="./reports/figures/violin_births.png" alt="vioin plot showing the percent change in births per month" style="background:none; border:none; box-shadow:none; text-align:center" width="500px"/>
+</figure>
+</div>
+
+### Dataset
+The data set is from the National Bureau of Economic Research (NBER), on their [Vital Statistics Natality Birth Data page](https://www.nber.org/research/data/vital-statistics-natality-birth-data). NBER has provided csv's of the birth data, by year, from 1968 to 2020. The data is originally sourced from the [CDC](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm).
+
+### Analysis Summary
+
 
 
 
 ## Setup
 
 Project will work well in a Linux and on a HPC environment. It will also work with MacOS (although not tested). Windows may require some minor changes by the user.
+
+
+
+
+
+
 
 
 
@@ -60,4 +89,10 @@ Project Organization
     │       └── visualize.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+
+## Future Work
+
+Ideas to consider:
+
+* Identify anomalies by geography (although geo data may not be fine enough)
 
