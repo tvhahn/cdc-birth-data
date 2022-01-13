@@ -222,8 +222,14 @@ def df_from_csv_no_geo(file_path, nrows=None):
     # if the CSVs are of newer format
     if year >= 2003:
 
+        # 2019 and 2020 columns are capitalized
+        if year >= 2019:
+            col_load_1 = [col_name.upper() for col_name in col_load_1]
+
         # load only select columns, and set dtype for columns
         df = pd.read_csv(file_path, nrows=nrows, usecols=col_load_1, dtype=str)
+
+        df.columns = df.columns.str.lower()
 
         # drop any rows with NaN's
         df = df.dropna()
@@ -313,8 +319,13 @@ def df_from_csv_no_geo_extra(file_path, nrows=None):
     # if the CSVs are of newer format
     if year >= 2003:
 
+        # 2019 and 2020 columns are capitalized
+        if year >= 2019:
+            col_load_1 = [col_name.upper() for col_name in col_load_1]
+
         # load only select columns, and set dtype for columns
         df = pd.read_csv(file_path, nrows=nrows, usecols=col_load_1, dtype=str)
+        df.columns = df.columns.str.lower()
 
         # drop any rows with NaN's
         df = df.dropna()
