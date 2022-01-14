@@ -21,7 +21,7 @@ The work can by broken into two parts:
 </div>
 
 ### Dataset
-The data set is from the National Bureau of Economic Research (NBER), on their [Vital Statistics Natality Birth Data page](https://www.nber.org/research/data/vital-statistics-natality-birth-data). NBER has provided csv's of the birth data, by year, from 1968 to 2020. The data is originally sourced from the [CDC](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm).
+The data set is from the National Bureau of Economic Research (NBER), on their [Vital Statistics Natality Birth Data page](https://www.nber.org/research/data/vital-statistics-natality-birth-data). NBER has provided csv's of the birth data, by year, from 1968 to 2020. The data is originally sourced from the [CDC Vital Statistics](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm).
 
 ### Analysis Summary
 
