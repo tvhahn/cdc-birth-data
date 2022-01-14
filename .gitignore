@@ -78,6 +78,7 @@ target/
 # exclude data from source control by default
 /data/raw/
 /data/interim/
+/data/processed/births_with_geo_apgar.csv.gz
 
 # Mac OS-specific storage files
 .DS_Store

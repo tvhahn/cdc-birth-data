@@ -22,7 +22,7 @@ def main(folder_raw_data):
     ]
 
     # set up your pool
-    with Pool(processes=8) as pool:  # or whatever your hardware can support
+    with Pool(processes=16) as pool:  # or whatever your hardware can support
 
         # have your pool map the file names to dataframes
         df_list = pool.map(df_from_csv_no_geo_extra, file_list)
@@ -44,5 +44,5 @@ if __name__ == "__main__":
     df = main(project_dir / "data/raw/")
     print("Final df shape:", df.shape)
 
-    df.to_csv(project_dir / "data/processed" / "birth_no_geo_apgar.csv", index=False)
+    df.to_csv(project_dir / "data/processed" / "births_simple_with_apgar.csv", index=False)
 
