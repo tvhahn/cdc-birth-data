@@ -95,4 +95,5 @@ Project Organization
 Ideas to consider:
 
 * Identify anomalies by geography (although geo data may not be fine enough)
+* Allow user to select any number of columns, and spit out new consolidated data file
 

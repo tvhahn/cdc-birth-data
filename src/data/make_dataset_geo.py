@@ -13,11 +13,13 @@ def main(folder_raw_data):
     cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info("making the final data set with geo data, but nothing extra (e.g APGAR data)")
+    logger.info(
+        "making the final data set with geo data, but nothing extra (e.g APGAR data)"
+    )
 
     # get a list of file names
     files = os.listdir(folder_raw_data)
-    
+
     file_list = [
         Path(folder_raw_data) / filename
         for filename in files
@@ -44,7 +46,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build data sets for analysis")
 
     parser.add_argument(
-        "--n_cores", type=int, default=16, help="Number of cores to use for multiprocessing"
+        "--n_cores",
+        type=int,
+        default=16,
+        help="Number of cores to use for multiprocessing",
     )
 
     args = parser.parse_args()
@@ -56,9 +61,12 @@ if __name__ == "__main__":
     df = main(project_dir / "data/raw/")
     print("Final df shape:", df.shape)
 
-
     df["births"] = np.ones(df.shape[0])
-    df.to_csv(project_dir / "data/processed" / "births_with_geo_apgar.csv.gz", compression="gzip", index=False)
+    df.to_csv(
+        project_dir / "data/processed" / "births_with_geo_apgar.csv.gz",
+        compression="gzip",
+        index=False,
+    )
 
     # create a birth count for each unique geo and date
     # this should reduce the size of the df significantly
@@ -70,4 +78,8 @@ if __name__ == "__main__":
     )
     print("Shape after consolidated birth count:", df.shape)
 
-    df.to_csv(project_dir / "data/processed" / "births_with_geo_apgar_consolidated.csv.gz", compression="gzip", index=False)
+    df.to_csv(
+        project_dir / "data/processed" / "births_with_geo_apgar_consolidated.csv.gz",
+        compression="gzip",
+        index=False,
+    )
