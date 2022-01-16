@@ -46,6 +46,7 @@ data: requirements
 ifeq (True,$(HAS_CONDA)) # assume on local
 	$(PYTHON_INTERPRETER) src/data/make_dataset_geo.py
 	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo.py
+	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo_extra.py
 else # assume on HPC
 	sbatch src/data/make_hpc_data.sh
 endif
@@ -56,7 +57,7 @@ figures: requirements
 ifeq (True,$(HAS_CONDA)) # assume on local
 	$(PYTHON_INTERPRETER) src/data/make_dataset_geo.py
 	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo.py
-	$(PYTHON_INTERPRETER) src/data/make_dataset_no_geo_extra.py
+
 else # assume on HPC
 	sbatch src/data/make_hpc_data.sh
 endif
