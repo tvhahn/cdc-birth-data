@@ -10,9 +10,9 @@ The work can by broken into two parts:
 
 
 
+Note: **Still a work in progress!** I'll be updating as I go along.
 
 
-**Still a work in progress.**
 
 <div style="text-align: left; ">
 <figure>
@@ -25,7 +25,7 @@ The data set is from the National Bureau of Economic Research (NBER), on their [
 
 ### Analysis Summary
 
-
+...
 
 
 ## Setup
