@@ -59,32 +59,6 @@ def df_birth_no_geo_prep(df, filter_year=None):
     # load csv is like this...
     # df = pd.read_csv(data_file, dtype=int).sort_values(by=['dob_yy', 'dob_mm', 'dob_wk'])
 
-    # helper functions
-    def get_month_string(cols):
-        month_index = int(cols[0])
-
-        # from https://stackoverflow.com/a/28446432/9214620
-        return datetime.date(1900, month_index, 1).strftime("%B")
-
-    def get_conception_month(cols):
-        month_index = int(cols[0])
-        concept_date = datetime.date(1900, month_index, 1) + relativedelta(months=-9)
-
-        return concept_date.strftime("%B")
-
-    def get_conception_year(cols):
-        month_index = int(cols[0])
-        year = int(cols[1])
-        concept_date = datetime.date(year, month_index, 1) + relativedelta(months=-9)
-
-        return int(concept_date.strftime("%Y"))
-
-    def get_conception_month_index(cols):
-        month_index = int(cols[0])
-        concept_date = datetime.date(1900, month_index, 1) + relativedelta(months=-9)
-
-        return int(concept_date.strftime("%m"))
-
     # add conception month columns and birth month
     df["conc_month"] = df[["dob_mm"]].apply(get_conception_month, axis=1)
     df["birth_month"] = df[["dob_mm"]].apply(get_month_string, axis=1)
