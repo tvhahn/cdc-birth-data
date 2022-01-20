@@ -16,4 +16,5 @@ dependencies:
   - pandas
   - click
   - python-dotenv
+  - python-kaleido
 
