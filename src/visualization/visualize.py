@@ -218,7 +218,7 @@ def plot_births_by_month(df, year=1990, path_save_dir=None, dpi=300, save_plot=T
         plt.show()
 
 
-def plot_births_by_month_percent_above_avg(df, start_year=1981, end_year=2020, path_save_dir=None, dpi=300, save_plot=True):
+def plot_births_by_month_violin(df, start_year=1981, end_year=2020, path_save_dir=None, dpi=300, save_plot=True):
     """"Take the prepared df and output the violin plot of percentage change by month"""
 
     dfp = percentage_birts_by_month(df, years_greater_than=1980)
@@ -365,7 +365,7 @@ def main():
         df, year=1990, path_save_dir=path_save_dir, dpi=300, save_plot=True
     )
 
-    plot_births_by_month_percent_above_avg(df, start_year=1981, end_year=2020, path_save_dir=path_save_dir, dpi=300, save_plot=True)
+    plot_births_by_month_violin(df, start_year=1981, end_year=2020, path_save_dir=path_save_dir, dpi=300, save_plot=True)
 
 
 if __name__ == "__main__":
