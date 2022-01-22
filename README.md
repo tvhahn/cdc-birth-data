@@ -5,25 +5,29 @@ Exploring the CDC birth data files using Python.
 
 The work can by broken into two parts:
 
-1. Data prep and consolidation of all data files into several summary tables. The summary tables may be of use to others.
+1. Data prep and consolidation of all the records into several summary tables. The summary tables may be of use to others.
+
 2. Analysis of the data, including production of several data visualizations
 
+   
 
+Note: **Still a work in progress!** I'll be updating as I go along. Here's a sample of the visualizations:
 
-Note: **Still a work in progress!** I'll be updating as I go along.
+<p align="center">
+  <img alt="face milling" src="./reports/figures/1990_births_by_month.png" width="200px">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="flank wear" src="./reports/figures/violin_births.png" width="200px">
+&nbsp; &nbsp; &nbsp; &nbsp;
+</p>
 
+### Dataset
+The data set is from the National Bureau of Economic Research (NBER), on their [Vital Statistics Natality Birth Data page](https://www.nber.org/research/data/vital-statistics-natality-birth-data). NBER has provided csv's of the birth data, by year, from 1968 to 2020. The data is originally sourced from the [CDC Vital Statistics](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm), and totals ~19 GB, uncompressed.
 
+### Analysis Summary
 
-<div style="text-align: left; ">
 <figure>
        <img src="./reports/figures/violin_births.png" alt="vioin plot showing the percent change in births per month" style="background:none; border:none; box-shadow:none; text-align:center" width="500px"/>
 </figure>
-</div>
-
-### Dataset
-The data set is from the National Bureau of Economic Research (NBER), on their [Vital Statistics Natality Birth Data page](https://www.nber.org/research/data/vital-statistics-natality-birth-data). NBER has provided csv's of the birth data, by year, from 1968 to 2020. The data is originally sourced from the [CDC Vital Statistics](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm).
-
-### Analysis Summary
 
 ...
 
@@ -59,7 +63,7 @@ Project Organization
     │
     ├── notebooks          <- Jupyter notebooks.
     │   └── scratch        <- Jupyter notebooks of questionable quality.
-
+    
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
