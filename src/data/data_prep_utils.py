@@ -453,6 +453,32 @@ def df_birth_no_geo_prep(df):
     ]
 
 
+def df_birth_with_geo_prep(df, df_abbr):
+     
+     
+    df = pd.merge(df, df_abbr, 
+                  left_on='state_name_mr',
+                  right_on='state', 
+                  how='inner', copy=False).drop(['state'], axis=1)
+    
+    
+    df = df.groupby(
+        ['dob_yy', 'dob_mm', 'state_name_mr','mrstatefips','abbr'], 
+        as_index=False).sum().sort_values(by=['dob_yy',
+                                              'dob_mm', 
+                                              'state_name_mr']).drop(columns=['mrcntyfips'])
+    
+    # add conception month columns and birth month
+    df['conc_month'] = df[['dob_mm']].apply(get_conception_month, axis=1)
+    df['birth_month'] = df[['dob_mm']].apply(get_month_string, axis=1)
+    df['conc_mm'] = df[['dob_mm']].apply(get_conception_month_index, axis=1)
+    df['conc_yy'] = df[['dob_mm', 'dob_yy']].apply(get_conception_year, axis=1)
+
+    return df[['dob_yy', 'dob_mm', 'state_name_mr', 
+               'mrstatefips', 'abbr', 'conc_month', 
+               'birth_month', 'conc_mm', 'conc_yy', 'births']]
+
+
 def filter_by_year(df, filter_cat="conc_yy", year=1990):
     """Filter df by year, either with conception year ('conc_yy')
     or birth year ('dob_yy')
