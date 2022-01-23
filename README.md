@@ -56,8 +56,22 @@ The following tables are currently generated:
 
 All the figures can be generated from the first three csv's listed above.
 
-Project Organization
-------------
+### Setup Steps
+
+To reproduce results:
+
+1. Clone this repo - `clone https://github.com/tvhahn/cdc-birth-data.git`
+2. Create virtual environment. Assumes that Conda is installed.
+   * Linux/MacOS: use command from the Makefile in the root directory - `make create_environment`
+   * Windows: from root directory - `conda env create -f envcdcbirth.yml`
+   * HPC: `make create_environment` will detect HPC environment and automatically create environment from `make_hpc_venv.sh`. Tested on Compute Canada. Modify `make_hpc_venv.sh` for your own HPC cluster.
+
+
+
+...
+
+
+## Project Organization
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
