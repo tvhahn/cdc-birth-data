@@ -14,9 +14,9 @@ The work can by broken into two parts:
 Note: **Still a work in progress!** I'll be updating as I go along. Here's a sample of the visualizations:
 
 <p align="center">
-  <img alt="face milling" src="./reports/figures/1990_births_by_month.png" width="200px">
+  <img alt="births by month" src="./reports/figures/1990_births_by_month.png" width="200px">
 &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="flank wear" src="./reports/figures/violin_births.png" width="200px">
+  <img alt="violin plot of births" src="./reports/figures/violin_births.png" width="200px">
 &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
 
@@ -25,12 +25,22 @@ The data set is from the National Bureau of Economic Research (NBER), on their [
 
 ### Analysis Summary
 
+#### Monthly Births
+I'm interested in seeing which months of the year are most popular for births. Answer: the summer!
+
+You can reproduce the charts below by running the `make figures` command. See the interactive chart of the violin plot on my [blog](https://www.tvhahn.com/posts/beautiful-plots-violin/), and run it in [Colab](https://colab.research.google.com/github/tvhahn/Beautiful-Plots/blob/master/Violin/violin_plot.ipynb). [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tvhahn/Beautiful-Plots/blob/master/Violin/violin_plot.ipynb)
+
+Figure showing the percentage change in births by month. Note that the summer months are the most popular for giving birth.
 <figure>
        <img src="./reports/figures/violin_births.png" alt="vioin plot showing the percent change in births per month" style="background:none; border:none; box-shadow:none; text-align:center" width="500px"/>
 </figure>
 
-...
+Plotting the numbers by year and month is less useful, like in the figure below, but still interesting.
+<figure>
+       <img src="./reports/figures/1990_births_by_month.png" alt="vioin plot showing the percent change in births per month" style="background:none; border:none; box-shadow:none; text-align:center" width="500px"/>
+</figure>
 
+I've also created chlorpleth maps of the birth data, by state, for the years 1981-2020. I just need to fix some things and put them up....
 
 ## Setup
 
