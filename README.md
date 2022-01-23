@@ -40,21 +40,21 @@ Plotting the numbers by year and month is less useful, like in the figure below,
        <img src="./reports/figures/1990_births_by_month.png" alt="vioin plot showing the percent change in births per month" style="background:none; border:none; box-shadow:none; text-align:center" width="500px"/>
 </figure>
 
-I've also created chlorpleth maps of the birth data, by state, for the years 1981-2020. I just need to fix some things and put them up....
+I've also created choropleth maps of the birth data, by state, for the years 1981-2020. I just need to fix some things and put them up....
 
 ## Setup
 
 Project will work well in a Linux and on a HPC environment. It will also work with MacOS (although not tested). Windows may require some minor changes by the user.
 
+The following tables are currently generated:
 
+* `births_simple.csv` - number of births, by year and month, from 1968 to 2020. Included in GitHub repo.
 
+* `births_simple_with_apgar.csv` - number of births, by year and month, including the APGAR score, from 1968 to 2020. Also included in repo.
+* `births_with_geo_apgar_consolidated.csv.gz` - number of births, with geography data and APGAR scores. Birth totals are grouped by geography, APGAR score, and date. Data is only from 1982 to 2004 (years where geo data is still publicly accessible). This file is included in repo (only 7 MB).
+* `births_with_geo_apgar.csv.gz` - number of births, with geography data and APGAR scores, but not grouped by. Not included in this repo cause of size (~90 MB).
 
-
-
-
-
-
-
+All the figures can be generated from the first three csv's listed above.
 
 Project Organization
 ------------
@@ -103,5 +103,7 @@ Project Organization
 Ideas to consider:
 
 * Identify anomalies by geography (although geo data may not be fine enough)
-* Allow user to select any number of columns, and spit out new consolidated data file
+* Allow user to select any number of columns, and spit out new consolidated data file <-- this is my number one priority.
+
+Any other suggestions, let me know! Happy to hack away at this with others. Cheers!
 
