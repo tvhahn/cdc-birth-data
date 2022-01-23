@@ -54,7 +54,7 @@ The following tables are currently generated:
 * `births_with_geo_apgar_consolidated.csv.gz` - number of births, with geography data and APGAR scores. Birth totals are grouped by geography, APGAR score, and date. Data is only from 1982 to 2004 (years where geo data is still publicly accessible). This file is included in repo (only 7 MB).
 * `births_with_geo_apgar.csv.gz` - number of births, with geography data and APGAR scores, but not grouped by. Not included in this repo cause of size (~90 MB).
 
-All the figures can be generated from the first three csv's listed above.
+All the figures can be generated from the first three csv's listed above. (I will include links to the Colab notebooks in the future)
 
 ### Setup Steps
 
