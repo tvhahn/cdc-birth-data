@@ -33,7 +33,8 @@ endif
 
 ## Download data
 download:
-	bash src/data/download.sh $(PROJECT_DIR)
+## bash src/data/download.sh $(PROJECT_DIR)
+	bash src/data/download_desc.sh $(PROJECT_DIR)
 	
 
 ## Extract downloaded data and rename directories as needed
