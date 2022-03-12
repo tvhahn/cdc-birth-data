@@ -17,4 +17,5 @@ dependencies:
   - click
   - python-dotenv
   - python-kaleido
+  - openpyxl
 
