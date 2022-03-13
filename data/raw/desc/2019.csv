@@ -1,0 +1,196 @@
+var_name,var_label
+dob_yy,Birth Year
+dob_mm,Birth Month
+dob_tt,Time of Birth
+dob_wk,Birth Day of Week
+bfacil,Birth Place
+f_facility,Reporting Flag for Birth Place
+bfacil3,Facility Recode
+mage_impflg,Mother’s Age Imputed
+mage_repflg,Reported Age of Mother Used Flag 
+mager,Mother’s Single Years of Age
+mager14,Mother’s Age Recode 14
+mager9,Mother’s Age Recode 9
+mbstate_rec,Mother’s Nativity
+restatus,Residence Status
+mrace31,Mother’s Race Recode 31
+mrace6,Mother’s Race Recode 6
+mrace15,Mother’s Race Recode 15
+mbrace,Bridged Race Mother
+mhispx,Mother’s Hispanic Origin
+mhisp_r,Mother’s Hispanic Origin Recode
+f_mhisp,Reporting Flag for Mother’s Origin
+mracehisp,Mother’s Race/Hispanic Origin
+mar_p,Paternity Acknowledged
+dmar,Marital Status
+f_mar_p,Reporting Flag for Paternity Acknowledged
+meduc,Mother’s Education
+f_meduc,Reporting Flag for Education of Mother
+fagerpt_flg,Father’s Reported Age Used
+fagecomb,Father’s Combined Age
+fagerec11,Father’s Age Recode 11
+frace31,Father’s Race Recode 31
+frace6,Father’s Race Recode 6
+frace15,Father’s Race Recode 15
+fhispx,Father’s Hispanic Origin
+fhisp_r,Father’s Hispanic Origin Recode
+f_fhisp,Reporting Flag for Father’s Origin
+fracehisp,Father’s Race/Hispanic Origin
+feduc,Father’s Education
+f_feduc,Reporting Flag for Education of Father
+priorlive,Prior Births Now Living
+priordead,Prior Births Now Dead
+priorterm,Prior Other Terminations
+lbo_rec,Live Birth Order Recode
+tbo_rec,Total Birth Order Recode
+illb_r,Interval Since Last Live Birth Recode
+illb_r11,Interval Since Last Live Birth Recode 11
+ilop_r,Interval Since Last Other Pregnancy Recode
+ilop_r11,Interval Since Last Other Pregnancy Recode 11
+ilp_r,Interval Since Last Pregnancy Recode
+ilp_r11,Interval Since Last Pregnancy Recode 11
+precare,Month Prenatal Care Began
+f_mpcb,Reporting Flag for Month Prenatal Care Began
+precare5,Month Prenatal Care Began Recode
+previs,Number of Prenatal Visits
+previs_rec,Number of Prenatal Visits Recode
+f_tpcv,Reporting Flag for Total Prenatal Care Visits
+wic,WIC
+f_wic,Reporting Flag for WIC
+cig_0,Cigarettes Before Pregnancy
+cig_1,Cigarettes 1st Trimester
+cig_2,Cigarettes 2nd Trimester
+cig_3,Cigarettes 3rd Trimester
+cig0_r,Cigarettes Before Pregnancy Recode
+cig1_r,Cigarettes 1st Trimester Recode
+cig2_r,Cigarettes 2nd Trimester Recode
+cig3_r,Cigarettes 3rd Trimester Recode
+f_cigs_0,Reporting Flag for Cigarettes before Pregnancy
+f_cigs_1,Reporting Flag for Cigarettes 1st Trimester
+f_cigs_2,Reporting Flag for Cigarettes 2nd Trimester
+f_cigs_3,Reporting Flag for Cigarettes 3rd Trimester
+cig_rec,Cigarette Recode
+f_tobaco,Reporting Flag for Tobacco use
+m_ht_in,Mother’s Height in Total Inches
+f_m_ht,Reporting Flag for Mother’s Height
+bmi,Body Mass Index
+bmi_r,Body Mass Index Recode
+f_pwgt,Reporting Flag for Pre-pregnancy Weight
+dwgt_r,Delivery Weight Recode
+f_dwgt,Reporting Flag for Delivery Weight
+wtgain,Weight Gain
+wtgain_rec,Weight Gain Recode
+f_wtgain,Reporting Flag for Weight Gain
+rf_pdiab,Pre-pregnancy Diabetes
+rf_gdiab,
+rf_phype,
+rf_ghype,
+rf_ehype,
+rf_inftr,
+rf_fedrg,
+rf_artec,
+f_rf_inft,
+f_rf_inf_drg,
+f_rf_inf_art,
+rf_cesar,
+rf_cesarn,
+f_rf_cesar,
+f_rf_ncesar,
+no_risks,
+obstetric_procedures,
+ob_ecvs,
+ob_ecvf,
+f_ob_succ,
+f_ob_fail,
+ld_indl,
+characteristics_of_labor_and_delivery,
+ld_augm,
+ld_ster,
+ld_antb,
+ld_chor,
+ld_anes,
+f_ld_indl,
+f_ld_augm,
+f_ld_ster,
+f_ld_antb,
+f_ld_chor,
+f_ld_anes,
+no_lbrdlv,
+f_me_pres,
+f_me_rout,
+f_me_trial,
+rdmeth_rec,
+dmeth_rec,
+f_dmeth_rec,
+mm_mtr,
+maternal_morbidity,
+mm_plac,
+mm_rupt,
+mm_uhyst,
+mm_aicu,
+f_mm_mtr,
+f_mm__plac,
+f_mm_rupt,
+f_mm_uhyst,
+f_mm_aicu,
+no_mmorb,
+attend,
+mtran,
+pay,
+pay_rec,
+f_pay,
+f_pay_rec,
+apgar5,
+apgar5r,
+f_apgar5,
+apgar10,
+apgar10r,
+dplural,
+imp_plur,
+setorder_r,
+sex,
+imp_sex,
+dlmp_mm,
+compgst_imp,
+obgest_flg,
+combgest,
+gestrec10,
+gestrec3,
+lmpused,
+oegest_comb,
+oegest_r10,
+oegest_r3,
+dbwt,
+bwtr12,
+bwtr4,
+ab_aven1,
+abnormal_conditions_of_the_newborn,
+ab_aven6,
+ab_nicu,
+ab_surf,
+ab_anti,
+ab_seiz,
+f_ab_vent,
+f_ab_vent6,
+f_ab_niuc,
+f_ab_surfac,
+f_ab_antibio,
+f_ab_seiz,
+no_abnorm,
+ca_limb,
+ca_cleft,
+ca_clpal,
+ca_down,
+ca_disor,
+ca_hypo,
+f_ca_limb,
+f_ca_cleftlp,
+f_ca_cleft,
+f_ca_downs,
+f_ca_chrom,
+f_ca_hypos,
+no_congen,
+itran,
+ilive,
+bfed,
+f_bfed,
